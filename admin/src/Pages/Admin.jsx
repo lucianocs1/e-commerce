@@ -7,7 +7,6 @@ import ListProduct from "../Components/ListaProdutos/ListaProduto";
 import EditProduto from "../Components/EditProduto/EditProduto";
 
 const Admin = () => {
-
   return (
     <div className="admin">
       <Sidebar />
@@ -21,4 +20,3 @@ const Admin = () => {
 };
 
 export default Admin;
-

@@ -3,8 +3,8 @@ import Footer from "./Components/Footer/Footer";
 import Navbar from "./Components/Navbar/Navbar";
 import Admin from "./Pages/Admin";
 
-export const backend_url = 'http://localhost:4000';
-export const currency = 'R$ ';
+export const backend_url = "http://localhost:4000";
+export const currency = "R$ ";
 
 function App() {
   return (

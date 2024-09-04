@@ -42,10 +42,10 @@
 //       <div className="nav-login-cart">
 //         {userName && <img src={bola} alt="" />}
 //         {localStorage.getItem('auth-token')
-//           ? <button onClick={() => { 
-//               localStorage.removeItem('auth-token'); 
-//               localStorage.removeItem('user-name'); 
-//               window.location.replace("/"); 
+//           ? <button onClick={() => {
+//               localStorage.removeItem('auth-token');
+//               localStorage.removeItem('user-name');
+//               window.location.replace("/");
 //             }}>Sair</button>
 //           : <Link to='/login' style={{ textDecoration: 'none' }}><button>Entrar</button></Link>}
 //         <Link to="/cart"><img src={cart_icon} alt="cart" /></Link>
@@ -57,15 +57,14 @@
 
 // export default Navbar;
 
-
-import React, { useContext, useRef, useState, useEffect } from 'react';
-import './Navbar.css';
-import { Link } from 'react-router-dom';
-import logo from '../Assets/logoma.jpg';
-import cart_icon from '../Assets/carrinho_imagem.png';
-import { ShopContext } from '../../Context/ShopContext';
-import nav_dropdown from '../Assets/nav_dropdown.png';
-import bola from '../Assets/bola.png';
+import React, { useContext, useRef, useState, useEffect } from "react";
+import "./Navbar.css";
+import { Link } from "react-router-dom";
+import logo from "../Assets/logoma.jpg";
+import cart_icon from "../Assets/carrinho_imagem.png";
+import { ShopContext } from "../../Context/ShopContext";
+import nav_dropdown from "../Assets/nav_dropdown.png";
+import bola from "../Assets/bola.png";
 
 const Navbar = () => {
   // Estado para controlar o menu ativo
@@ -75,56 +74,74 @@ const Navbar = () => {
   const { getTotalCartItems } = useContext(ShopContext);
 
   // Estado para armazenar o nome do usuário
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState("");
 
   // Referência para o menu dropdown
   const menuRef = useRef();
 
   /**
    * Alterna a visibilidade do menu dropdown e o estado do ícone do dropdown.
-   * 
+   *
    * @param {Object} e - Evento de clique.
    */
   const dropdown_toggle = (e) => {
-    menuRef.current.classList.toggle('nav-menu-visible');
-    e.target.classList.toggle('open');
+    menuRef.current.classList.toggle("nav-menu-visible");
+    e.target.classList.toggle("open");
   };
 
   // Recupera o nome do usuário do localStorage quando o componente é montado
   useEffect(() => {
-    const storedUserName = localStorage.getItem('user-name');
+    const storedUserName = localStorage.getItem("user-name");
     if (storedUserName) {
       setUserName(storedUserName);
     }
   }, []);
 
   return (
-    <div className='nav'>
+    <div className="nav">
       {/* Logo e link para a página inicial */}
-      <Link to='/' onClick={() => setMenu("shop")} style={{ textDecoration: 'none' }} className="nav-logo">
+      <Link
+        to="/"
+        onClick={() => setMenu("shop")}
+        style={{ textDecoration: "none" }}
+        className="nav-logo"
+      >
         <img src={logo} alt="logo" />
         <p>MARIANA AGUIAR</p>
       </Link>
 
       {/* Ícone do dropdown para abrir/fechar o menu */}
-      <img onClick={dropdown_toggle} className='nav-dropdown' src={nav_dropdown} alt="Menu" />
+      <img
+        onClick={dropdown_toggle}
+        className="nav-dropdown"
+        src={nav_dropdown}
+        alt="Menu"
+      />
 
       {/* Menu de navegação */}
       <ul ref={menuRef} className="nav-menu">
         <li onClick={() => setMenu("shop")}>
-          <Link to='/' style={{ textDecoration: 'none' }}>Novidades</Link>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            Novidades
+          </Link>
           {menu === "shop" && <hr />}
         </li>
         <li onClick={() => setMenu("roupas")}>
-          <Link to='/roupas' style={{ textDecoration: 'none' }}>Roupas</Link>
+          <Link to="/roupas" style={{ textDecoration: "none" }}>
+            Roupas
+          </Link>
           {menu === "roupas" && <hr />}
         </li>
         <li onClick={() => setMenu("calcados")}>
-          <Link to='/calcados' style={{ textDecoration: 'none' }}>Calçados</Link>
+          <Link to="/calcados" style={{ textDecoration: "none" }}>
+            Calçados
+          </Link>
           {menu === "calcados" && <hr />}
         </li>
         <li onClick={() => setMenu("bolsas")}>
-          <Link to='/bolsas' style={{ textDecoration: 'none' }}>Bolsas</Link>
+          <Link to="/bolsas" style={{ textDecoration: "none" }}>
+            Bolsas
+          </Link>
           {menu === "bolsas" && <hr />}
         </li>
       </ul>
@@ -132,16 +149,18 @@ const Navbar = () => {
       {/* Seção de login e carrinho */}
       <div className="nav-login-carrinho">
         {userName && <img src={bola} alt="User Icon" />}
-        {localStorage.getItem('auth-token') ? (
-          <button onClick={() => { 
-            localStorage.removeItem('auth-token'); 
-            localStorage.removeItem('user-name'); 
-            window.location.replace("/"); 
-          }}>
+        {localStorage.getItem("auth-token") ? (
+          <button
+            onClick={() => {
+              localStorage.removeItem("auth-token");
+              localStorage.removeItem("user-name");
+              window.location.replace("/");
+            }}
+          >
             Sair
           </button>
         ) : (
-          <Link to='/login' style={{ textDecoration: 'none' }}>
+          <Link to="/login" style={{ textDecoration: "none" }}>
             <button>Entrar</button>
           </Link>
         )}

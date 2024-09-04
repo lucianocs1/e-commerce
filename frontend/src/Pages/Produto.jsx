@@ -1,40 +1,10 @@
-// import React, { useContext, useEffect, useState } from 'react'
-// import Breadcrums from '../Components/Breadcrums/Breadcrums'
-// import ProductDisplay from '../Components/ProductDisplay/ProductDisplay'
-// import DescriptionBox from '../Components/DescriptionBox/DescriptionBox'
-// import RelatedProducts from '../Components/RelatedProducts/RelatedProducts'
-// import { useParams } from 'react-router-dom'
-// import { ShopContext } from '../Context/ShopContext'
-
-// const Product = () => {
-//   const {products} = useContext(ShopContext);
-//   const {productId} = useParams();
-//   const [product,setProduct] = useState(false);
-
-//   useEffect(()=>{
-//     setProduct(products.find((e)=>e.id === Number(productId)))
-//   },[products,productId])
-
-//   return product ? (
-//     <div>
-//       <Breadcrums product={product}/>
-//       <ProductDisplay product={product}/>
-//       <DescriptionBox/>
-//       <RelatedProducts id={product.id} category={product.category}/>
-//     </div>
-//   ) : null
-// }
-
-// export default Product
-
-
-import React, { useContext, useEffect, useState } from 'react';
-import NavProduto from '../Components/NavProduto/NavProduto';
-import ProductDisplay from '../Components/AreaProduto/AreaProduto';
-import DescriptionBox from '../Components/DescricaoProd/DescricaoProd';
-import RelatedProducts from '../Components/ProdutosRelacionados/ProdutosRelacionados';
-import { useParams } from 'react-router-dom';
-import { ShopContext } from '../Context/ShopContext';
+import React, { useContext, useEffect, useState } from "react";
+import NavProduto from "../Components/NavProduto/NavProduto";
+import ProductDisplay from "../Components/AreaProduto/AreaProduto";
+import DescriptionBox from "../Components/DescricaoProd/DescricaoProd";
+import RelatedProducts from "../Components/ProdutosRelacionados/ProdutosRelacionados";
+import { useParams } from "react-router-dom";
+import { ShopContext } from "../Context/ShopContext";
 
 const Product = () => {
   // Obtém os produtos e outras funções do contexto ShopContext
@@ -69,6 +39,6 @@ const Product = () => {
       <RelatedProducts id={product.id} category={product.category} />
     </div>
   ) : null; // Retorna null enquanto o produto não é encontrado
-}
+};
 
 export default Product;

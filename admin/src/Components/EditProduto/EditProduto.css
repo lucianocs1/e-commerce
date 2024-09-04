@@ -66,12 +66,12 @@
   background: gray;
   border: none;
   cursor: pointer;
-  color: #FFF;
+  color: #fff;
   font-size: 16px;
   font-weight: 500;
 }
 
-@media(max-width:800px) {
+@media (max-width: 800px) {
   .adicionar-produto {
     width: auto;
     padding: 30px;

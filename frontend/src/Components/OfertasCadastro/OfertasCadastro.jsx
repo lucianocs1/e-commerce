@@ -1,10 +1,10 @@
 //Ofertas exclusivas
-import React from 'react'
-import './OfertasCadastro.css'
+import React from "react";
+import "./OfertasCadastro.css";
 
 const NewsLetter = () => {
   return (
-    <div className='ofertas-cadastro'>
+    <div className="ofertas-cadastro">
       <h1>Receba ofertas exclusivas em seu e-mail!</h1>
       <p>Cadastre-se e fique por dentro de tudo!</p>
       <div>
@@ -13,7 +13,7 @@ const NewsLetter = () => {
         </a>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NewsLetter
+export default NewsLetter;

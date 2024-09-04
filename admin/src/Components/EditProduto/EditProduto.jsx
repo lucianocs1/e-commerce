@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./EditProduto.css";
 import upload_area from "../Assets/upload_area.svg";
 import { backend_url } from "../../App";
-import { useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const EditProduto = () => {
   const { id } = useParams();
@@ -47,7 +47,6 @@ const EditProduto = () => {
     };
     fetchProductDetails();
   }, [id]); // <== Corrigido: depende do ID para recarregar quando ele mudar
-  
 
   const AddProduto = async () => {
     let dataObj;

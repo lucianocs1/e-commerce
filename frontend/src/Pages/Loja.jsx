@@ -1,65 +1,26 @@
-// import React, { useEffect, useState } from 'react'
-// import Hero from '../Components/Hero/Hero'
-// import Popular from '../Components/Popular/Popular'
-// import Offers from '../Components/Offers/Offers'
-// import NewCollections from '../Components/NewCollections/NewCollections'
-// import NewsLetter from '../Components/NewsLetter/NewsLetter'
-
-// const Shop = () => {
-
-//   const [popular, setPopular] = useState([]);
-//   const [newcollection, setNewCollection] = useState([]);
-
-//   const fetchInfo = () => { 
-//     fetch('http://localhost:4000/popularinwomen') 
-//             .then((res) => res.json()) 
-//             .then((data) => setPopular(data))
-//     fetch('http://localhost:4000/newcollections') 
-//             .then((res) => res.json()) 
-//             .then((data) => setNewCollection(data))
-//     }
-
-//     useEffect(() => {
-//       fetchInfo();
-//     }, [])
-
-
-//   return (
-//     <div>
-//       <Hero/>
-//       <Popular data={popular}/>
-//       <Offers/>
-//       <NewCollections data={newcollection}/>
-//       <NewsLetter/>
-//     </div>
-//   )
-// }
-
-// export default Shop
-
-import React, { useEffect, useState } from 'react';
-import Hero from '../Components/Inicio/Inicio';
-import Popular from '../Components/Popular/Popular';
-import Offers from '../Components/Ofertas/Ofertas';
-import NewCollections from '../Components/NovasColecoes/NovasColecoes';
-import NewsLetter from '../Components/OfertasCadastro/OfertasCadastro';
+import React, { useEffect, useState } from "react";
+import Hero from "../Components/Inicio/Inicio";
+import Popular from "../Components/Popular/Popular";
+import Offers from "../Components/Ofertas/Ofertas";
+import NewCollections from "../Components/NovasColecoes/NovasColecoes";
+import NewsLetter from "../Components/OfertasCadastro/OfertasCadastro";
 
 const Shop = () => {
   // Estado para armazenar os produtos populares
   const [popular, setPopular] = useState([]);
-  
+
   // Estado para armazenar as novas coleções
   const [newcollection, setNewCollection] = useState([]);
 
   // Função para buscar informações dos produtos populares e novas coleções
   const fetchInfo = () => {
     // Faz uma requisição para obter produtos populares
-    fetch('http://localhost:4000/popularinwomen')
+    fetch("http://localhost:4000/popularinwomen")
       .then((res) => res.json())
       .then((data) => setPopular(data)); // Atualiza o estado com os dados recebidos
 
     // Faz uma requisição para obter novas coleções
-    fetch('http://localhost:4000/newcollections')
+    fetch("http://localhost:4000/newcollections")
       .then((res) => res.json())
       .then((data) => setNewCollection(data)); // Atualiza o estado com os dados recebidos
   };
@@ -87,6 +48,6 @@ const Shop = () => {
       <NewsLetter />
     </div>
   );
-}
+};
 
 export default Shop;
