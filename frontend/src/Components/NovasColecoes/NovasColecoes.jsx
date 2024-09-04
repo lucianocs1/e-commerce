@@ -23,23 +23,15 @@ import React from 'react';
 import './NovasColecoes.css';
 import Item from '../Item/Item';
 
-/**
- * Componente NewCollections exibe uma lista de novos itens de coleção.
- * 
- * @param {Object} props - Propriedades passadas para o componente.
- * @param {Array} props.data - Array de objetos contendo informações dos itens a serem exibidos.
- * 
- * @returns {JSX.Element} - Renderiza a seção de novas coleções com itens.
- */
 const NewCollections = (props) => {
   return (
-    <div className='new-collections'>
+    <div className='novas-colecoes'>
       {/* Título da seção */}
       <h1>NOVAS COLEÇÕES</h1>
       <hr />
       
       {/* Container para a lista de itens */}
-      <div className="collections">
+      <div className="colecoes">
         {/* Mapeia os itens da propriedade 'data' para renderizar o componente Item */}
         {props.data.map((item, index) => (
           <Item 

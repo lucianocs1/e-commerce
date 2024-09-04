@@ -1,33 +1,32 @@
-.hero{
+.img-principal {
     min-height: 90vh;
-    background:  linear-gradient(180deg, white, gray 60%);
+    background: linear-gradient(180deg, white, gray 60%);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 9%;
 }
-.hero-left{
+.img-principal-esquerda {
     line-height: 1.1;
 }
-.hero-left h2{
+.img-principal-esquerda h2 {
     color: #090909;
     font-size: 18px;
 }
-
-.hero-left p{
+.img-principal-esquerda p {
     color: #171717;
     font-size: 80px;   
     font-weight: 700;
 }
-.hero-hand-icon{
+.img-principal-icone-sol {
     display: flex;
     align-items: center;
     gap: 20px;
 }
-.hero-hand-icon img{
+.img-principal-icone-sol img {
     width: 100px;
 }
-.hero-latest-btn{
+.img-principal-botao-novidades {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,56 +41,51 @@
     font-weight: 500;
     cursor: pointer;
 }
-.hero-latest-btn img{
+.img-principal-botao-novidades img {
     width: 16px;
 }
-
-.hero-right img{
+.img-principal-direita img {
     width: 350px;
 }
 
-@media(max-width:1200px){
-    
-    .hero{
+/* Media Queries */
+@media (max-width: 1200px) {
+    .img-principal {
         padding: 10px 6%;
     }
-    .hero-left p{
+    .img-principal-esquerda p {
         font-size: 70px;
     }
-    .hero-right img{
+    .img-principal-direita img {
         width: 400px;
     }
-   
 }
-@media(max-width:900px){
-   
-    .hero-left p{
+@media (max-width: 900px) {
+    .img-principal-esquerda p {
         font-size: 45px;
     }
-    .hero-right img{
+    .img-principal-direita img {
         width: 350px;
     }
-   
 }
-@media(max-width:700px){
-   .hero{
-    padding: 0 10%;
-    min-height: 95vh;
-   }
-    .hero-left p{
+@media (max-width: 700px) {
+    .img-principal {
+        padding: 0 10%;
+        min-height: 95vh;
+    }
+    .img-principal-esquerda p {
         font-size: 55px;
     }
-    .hero-right{
+    .img-principal-direita {
         display: none;
     }
-    .hero-left{
+    .img-principal-esquerda {
         line-height: 1.2;
     }
-    .hero-left h2{
+    .img-principal-esquerda h2 {
         margin-bottom: 20px;
     }
-  
-    .hero-latest-btn{
+    .img-principal-botao-novidades {
         margin-top: 30px;
     }
 }

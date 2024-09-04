@@ -98,7 +98,7 @@
 
 
 import React, { useEffect, useState, useCallback } from "react";
-import "./CSS/ShopCategory.css";
+import "./CSS/CategoriaLoja.css";
 import Item from "../Components/Item/Item";
 import { Link } from "react-router-dom";
 
@@ -136,7 +136,7 @@ const ShopCategory = (props) => {
       </div>
 
       {/* Lista de produtos filtrados */}
-      <div className="shopcategory-products">
+      <div className="shopcategory-produtos">
         {filteredProducts.map((item, i) => (
           <Item 
             id={item.id} 

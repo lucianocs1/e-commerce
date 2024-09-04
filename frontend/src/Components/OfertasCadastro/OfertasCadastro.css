@@ -1,4 +1,4 @@
-.newsletter{
+.ofertas-cadastro{
     width: 90%;
     max-width: 1200px;
     box-sizing: border-box;
@@ -13,18 +13,18 @@
     gap: 20px;
 }
 
-.newsletter h1{
+.ofertas-cadastro h1{
     color: #454545;
     font-size: 45px;
     font-weight: 600;
 }
 
-.newsletter p{
+.ofertas-cadastro p{
     color: #454545;
     font-size: 18px;
 }
 
-.newsletter div{
+.ofertas-cadastro div{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,7 +33,7 @@
     height: 60px;
 }
 
-.newsletter input{
+.ofertas-cadastro input{
     flex: 1;
     padding-left: 30px;
     border: none;
@@ -43,7 +43,7 @@
     font-size: 16px;
 }
 
-.newsletter div button{
+.ofertas-cadastro div button{
     width: 180px;
     height: 60px;
     border-radius: 80px;
@@ -56,27 +56,27 @@
 /* ----------- media query--------- */
 
 @media(max-width:1280px){
-    .newsletter h1{
+    .ofertas-cadastro h1{
         font-size: 35px;
     } 
 }
 
 @media(max-width:900px){
-    .newsletter h1{
+    .ofertas-cadastro h1{
         font-size: 30px;
     }
-    .newsletter{
+    .ofertas-cadastro{
         gap: 10px;
     }
-   .newsletter div{
+   .ofertas-cadastro div{
         width: 95%;
         height: 50px;
         margin-top: 10px;
    }
-   .newsletter input{
+   .ofertas-cadastro input{
         padding-left: 20px;
     }
-    .newsletter div button{
+    .ofertas-cadastro div button{
         width: 100px;
         height: 50px;
         border-radius: 25px;
@@ -84,13 +84,13 @@
     }
 }
 @media(max-width:500px){
-    .newsletter{
+    .ofertas-cadastro{
         padding: 50px 5%;
     }
-    .newsletter div{
+    .ofertas-cadastro div{
         width: 100%;
     }
-    .newsletter div button{
+    .ofertas-cadastro div button{
         font-size: 12px;
     }
 }

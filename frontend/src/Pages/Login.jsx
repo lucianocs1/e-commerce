@@ -158,7 +158,7 @@
 
 
 import React, { useState } from "react";
-import "./CSS/LoginSignup.css";
+import "./CSS/Login.css";
 
 const LoginSignup = () => {
   // Estado para controlar a exibição entre "Entrar" e "Crie sua conta"
@@ -232,12 +232,12 @@ const LoginSignup = () => {
   };
 
   return (
-    <div className="loginsignup">
-      <div className="loginsignup-container">
+    <div className="log">
+      <div className="log-container">
         {/* Exibe o título com base no estado (Entrar ou Crie sua conta) */}
         <h1>{state}</h1>
         
-        <div className="loginsignup-fields">
+        <div className="log-fields">
           {/* Exibe campo de nome apenas se o estado for "Crie sua conta" */}
           {state === "Crie sua conta" && (
             <input
@@ -271,19 +271,19 @@ const LoginSignup = () => {
         
         {/* Alterna entre as opções de login e cadastro */}
         {state === "Entrar" ? (
-          <p className="loginsignup-login">
+          <p className="log-login">
             Não possui conta?{" "}
             <span onClick={() => setState("Crie sua conta")}>Crie sua conta aqui</span>
           </p>
         ) : (
-          <p className="loginsignup-login">
+          <p className="log-login">
             Já possui uma conta?{" "}
             <span onClick={() => setState("Entrar")}>Entre aqui</span>
           </p>
         )}
         
         {/* Checkbox para aceitar termos e políticas */}
-        <div className="loginsignup-agree">
+        <div className="log-agree">
           <input type="checkbox" />
           <p>Ao continuar, concordo com os termos de uso e política de privacidade.</p>
         </div>

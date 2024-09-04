@@ -67,12 +67,6 @@ import { ShopContext } from '../../Context/ShopContext';
 import nav_dropdown from '../Assets/nav_dropdown.png';
 import bola from '../Assets/bola.png';
 
-/**
- * Componente Navbar que exibe a barra de navegação com links para diferentes páginas,
- * ícones de carrinho e login, e o nome do usuário se disponível.
- * 
- * @returns {JSX.Element} - Renderiza o componente Navbar.
- */
 const Navbar = () => {
   // Estado para controlar o menu ativo
   const [menu, setMenu] = useState("shop");
@@ -136,7 +130,7 @@ const Navbar = () => {
       </ul>
 
       {/* Seção de login e carrinho */}
-      <div className="nav-login-cart">
+      <div className="nav-login-carrinho">
         {userName && <img src={bola} alt="User Icon" />}
         {localStorage.getItem('auth-token') ? (
           <button onClick={() => { 
@@ -154,7 +148,7 @@ const Navbar = () => {
         <Link to="/cart">
           <img src={cart_icon} alt="Cart" />
         </Link>
-        <div className="nav-cart-count">{getTotalCartItems()}</div>
+        <div className="nav-carrinho-count">{getTotalCartItems()}</div>
       </div>
     </div>
   );
