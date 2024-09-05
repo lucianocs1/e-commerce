@@ -2,16 +2,16 @@ import React, { useContext } from "react"; // Importa React e o hook useContext 
 import "./ItensCarrinho.css"; // Importa o arquivo de estilos CSS específico para o componente
 import cross_icon from "../Assets/cart_cross_icon.png"; // Importa o ícone de remoção do carrinho
 import { ShopContext } from "../../Context/ShopContext"; // Importa o contexto da loja
-import { backend_url, currency } from "../../App"; // Importa a URL do backend e a moeda para formatação
+import { backend_url, moeda } from "../../App"; // Importa a URL do backend e a moeda para formatação
 
-const CartItems = () => {
+const CarrinhoItems = () => {
   // Desestrutura as funções e dados do contexto ShopContext
   const {
     products,
-    cartItems,
+    carrinhoItems,
     removeFromCart,
-    updateCartItemQuantity,
-    getTotalCartAmount,
+    updateCarrinhoItemQt,
+    getTotalCarrinho,
   } = useContext(ShopContext);
 
   // Função para confirmar e remover um item do carrinho
@@ -26,13 +26,13 @@ const CartItems = () => {
 
   // Função para aumentar a quantidade de um item no carrinho
   const handleIncreaseQuantity = (id) => {
-    updateCartItemQuantity(id, cartItems[id] + 1); // Atualiza a quantidade no contexto
+    updateCarrinhoItemQt(id, carrinhoItems[id] + 1); // Atualiza a quantidade no contexto
   };
 
   // Função para diminuir a quantidade de um item no carrinho
   const handleDecreaseQuantity = (id) => {
-    if (cartItems[id] > 1) {
-      updateCartItemQuantity(id, cartItems[id] - 1); // Atualiza a quantidade no contexto se for maior que 1
+    if (carrinhoItems[id] > 1) {
+      updateCarrinhoItemQt(id, carrinhoItems[id] - 1); // Atualiza a quantidade no contexto se for maior que 1
     }
   };
 
@@ -50,7 +50,7 @@ const CartItems = () => {
       </div>
       <hr />
       {products.map((e) => {
-        if (cartItems[e.id] > 0) {
+        if (carrinhoItems[e.id] > 0) {
           // Verifica se o item está no carrinho
           return (
             <div key={e.id}>
@@ -65,7 +65,7 @@ const CartItems = () => {
                 <p className="itens-carrinho-produto-titulo">{e.name}</p>
                 {/* Nome do produto */}
                 <p>
-                  {currency}
+                  {moeda}
                   {e.new_price}
                 </p>
                 {/* Preço do produto */}
@@ -75,15 +75,15 @@ const CartItems = () => {
                     -
                   </button>
                   {/* Botão para diminuir a quantidade */}
-                  <span> {cartItems[e.id]} </span> {/* Quantidade atual */}
+                  <span> {carrinhoItems[e.id]} </span> {/* Quantidade atual */}
                   <button onClick={() => handleIncreaseQuantity(e.id)}>
                     +
                   </button>
                   {/* Botão para aumentar a quantidade */}
                 </div>
                 <p>
-                  {currency}
-                  {e.new_price * cartItems[e.id]}
+                  {moeda}
+                  {e.new_price * carrinhoItems[e.id]}
                 </p>
                 {/* Total por item */}
                 <img
@@ -110,8 +110,8 @@ const CartItems = () => {
               {/* Item subtotal */}
               <p>Subtotal</p>
               <p>
-                {currency}
-                {getTotalCartAmount()}
+                {moeda}
+                {getTotalCarrinho()}
               </p>
             </div>
             <hr />
@@ -125,8 +125,8 @@ const CartItems = () => {
               {/* Item total */}
               <h3>Total</h3>
               <h3>
-                {currency}
-                {getTotalCartAmount()}
+                {moeda}
+                {getTotalCarrinho()}
               </h3>
             </div>
           </div>
@@ -138,4 +138,4 @@ const CartItems = () => {
   );
 };
 
-export default CartItems; // Exporta o componente para ser usado em outras partes da aplicação
+export default CarrinhoItems; // Exporta o componente para ser usado em outras partes da aplicação

@@ -34,7 +34,7 @@ const getNewCollections = async (req, res) => {
   res.send(arr);
 };
 
-const getPopularInWomen = async (req, res) => {
+const getPopular = async (req, res) => {
   const products = await Product.find({ category: "roupas" });
   const arr = products.slice(0, 4);
   console.log(arr);
@@ -110,7 +110,7 @@ const editProduto = async (req, res) => {
 module.exports = {
   getAllProducts,
   getNewCollections,
-  getPopularInWomen,
+  getPopular,
   getRelatedProducts,
   addProduct,
   removeProduct,

@@ -9,16 +9,16 @@ const ShopContextProvider = (props) => {
   const [products, setProducts] = useState([]);
 
   // Função para inicializar o carrinho de compras
-  const getDefaultCart = () => {
-    let cart = {};
+  const getDefaultCarrinho = () => {
+    let carrinho = {};
     for (let i = 0; i < 300; i++) {
-      cart[i] = 0; // Inicializa todos os itens com quantidade 0
+      carrinho[i] = 0; // Inicializa todos os itens com quantidade 0
     }
-    return cart;
+    return carrinho;
   };
 
   // Estado para armazenar os itens do carrinho
-  const [cartItems, setCartItems] = useState(getDefaultCart());
+  const [carrinhoItems, setCarrinhoItems] = useState(getDefaultCarrinho());
 
   useEffect(() => {
     // Busca todos os produtos quando o componente é montado
@@ -39,20 +39,20 @@ const ShopContextProvider = (props) => {
         body: JSON.stringify(),
       })
         .then((resp) => resp.json())
-        .then((data) => setCartItems(data))
+        .then((data) => setCarrinhoItems(data))
         .catch((error) => console.error("Erro ao buscar carrinho:", error));
     }
   }, []); // Dependências vazias para executar apenas na montagem do componente
 
   // Calcula o valor total do carrinho
-  const getTotalCartAmount = () => {
-    return Object.keys(cartItems).reduce((totalAmount, item) => {
-      if (cartItems[item] > 0) {
+  const getTotalCarrinho = () => {
+    return Object.keys(carrinhoItems).reduce((totalAmount, item) => {
+      if (carrinhoItems[item] > 0) {
         const itemInfo = products.find(
           (product) => product.id === Number(item)
         );
         if (itemInfo) {
-          totalAmount += cartItems[item] * itemInfo.new_price;
+          totalAmount += carrinhoItems[item] * itemInfo.new_price;
         }
       }
       return totalAmount;
@@ -60,22 +60,22 @@ const ShopContextProvider = (props) => {
   };
 
   // Calcula o número total de itens no carrinho
-  const getTotalCartItems = () => {
-    return Object.keys(cartItems).reduce((totalItem, item) => {
-      if (cartItems[item] > 0) {
-        totalItem += cartItems[item];
+  const getTotalCarrinhoItems = () => {
+    return Object.keys(carrinhoItems).reduce((totalItem, item) => {
+      if (carrinhoItems[item] > 0) {
+        totalItem += carrinhoItems[item];
       }
       return totalItem;
     }, 0);
   };
 
   // Adiciona um item ao carrinho
-  const addToCart = (itemId) => {
+  const addCarrinho = (itemId) => {
     if (!localStorage.getItem("auth-token")) {
       alert("Por favor, efetue o seu login.");
       return;
     }
-    setCartItems((prev) => ({ ...prev, [itemId]: (prev[itemId] || 0) + 1 }));
+    setCarrinhoItems((prev) => ({ ...prev, [itemId]: (prev[itemId] || 0) + 1 }));
 
     fetch(`${backend_url}/addtocart`, {
       method: "POST",
@@ -89,9 +89,9 @@ const ShopContextProvider = (props) => {
   };
 
   // Remove um item do carrinho
-  const removeFromCart = (itemId) => {
-    if (cartItems[itemId] > 0) {
-      setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+  const removeCarrinho = (itemId) => {
+    if (carrinhoItems[itemId] > 0) {
+      setCarrinhoItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
 
       fetch(`${backend_url}/removefromcart`, {
         method: "POST",
@@ -106,9 +106,9 @@ const ShopContextProvider = (props) => {
   };
 
   // Atualiza a quantidade de um item no carrinho
-  const updateCartItemQuantity = (itemId, quantity) => {
+  const updateCarrinhoItemQt = (itemId, quantity) => {
     if (quantity > 0) {
-      setCartItems((prev) => ({ ...prev, [itemId]: quantity }));
+      setCarrinhoItems((prev) => ({ ...prev, [itemId]: quantity }));
 
       fetch(`${backend_url}/updatecart`, {
         method: "POST",
@@ -120,19 +120,19 @@ const ShopContextProvider = (props) => {
         body: JSON.stringify({ itemId, quantity }),
       }).catch((error) => console.error("Erro ao atualizar carrinho:", error));
     } else {
-      removeFromCart(itemId); // Opcionalmente remove o item se a quantidade for zero
+      removeCarrinho(itemId); // Opcionalmente remove o item se a quantidade for zero
     }
   };
 
   // Valor do contexto fornecido para os componentes filhos
   const contextValue = {
     products,
-    getTotalCartItems,
-    cartItems,
-    addToCart,
-    removeFromCart,
-    updateCartItemQuantity,
-    getTotalCartAmount,
+    getTotalCarrinhoItems,
+    carrinhoItems,
+    addCarrinho,
+    removeCarrinho,
+    updateCarrinhoItemQt,
+    getTotalCarrinho,
   };
 
   return (

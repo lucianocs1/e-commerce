@@ -1,6 +1,6 @@
 const User = require("../models/userModel");
 
-const addToCart = async (req, res) => {
+const addCarrinho = async (req, res) => {
   try {
     const userData = await User.findOne({ _id: req.user.id });
 
@@ -31,7 +31,7 @@ const addToCart = async (req, res) => {
   }
 };
 
-const removeFromCart = async (req, res) => {
+const removeDoCarrinho = async (req, res) => {
   try {
     const userData = await User.findOne({ _id: req.user.id });
 
@@ -60,7 +60,7 @@ const removeFromCart = async (req, res) => {
   }
 };
 
-const getCart = async (req, res) => {
+const getCarrinho = async (req, res) => {
   try {
     const userData = await User.findOne({ _id: req.user.id });
 
@@ -76,4 +76,4 @@ const getCart = async (req, res) => {
   }
 };
 
-module.exports = { addToCart, removeFromCart, getCart };
+module.exports = { addCarrinho, removeDoCarrinho, getCarrinho };

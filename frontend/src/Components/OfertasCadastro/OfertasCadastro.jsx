@@ -2,7 +2,7 @@
 import React from "react";
 import "./OfertasCadastro.css";
 
-const NewsLetter = () => {
+const OfertasCadastro = () => {
   return (
     <div className="ofertas-cadastro">
       <h1>Receba ofertas exclusivas em seu e-mail!</h1>
@@ -16,4 +16,4 @@ const NewsLetter = () => {
   );
 };
 
-export default NewsLetter;
+export default OfertasCadastro;

@@ -4,7 +4,7 @@ import ma_imagem from "../Assets/ma_imagem.png";
 import ma_imagem1 from "../Assets/ma_imagem1.png";
 import sol_imagem from "../Assets/sol.png";
 
-const Hero = () => {
+const Inicio = () => {
   return (
     <div className="img-principal">
       <div className="img-principal-esquerda">
@@ -33,4 +33,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Inicio;

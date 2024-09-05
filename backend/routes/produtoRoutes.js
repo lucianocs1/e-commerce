@@ -3,7 +3,7 @@ const express = require("express");
 const {
   getAllProducts,
   getNewCollections,
-  getPopularInWomen,
+  getPopular,
   getRelatedProducts,
   addProduct,
   removeProduct,
@@ -14,7 +14,7 @@ const router = express.Router();
 
 router.get("/allproducts", getAllProducts);
 router.get("/newcollections", getNewCollections);
-router.get("/popularinwomen", getPopularInWomen);
+router.get("/popularinwomen", getPopular);
 router.get("/produto/:id", getProductById);
 router.put("/edit/:id", editProduto);
 router.post("/relatedproducts", getRelatedProducts);

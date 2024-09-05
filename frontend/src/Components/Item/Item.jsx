@@ -1,7 +1,7 @@
 import React from "react";
 import "./Item.css";
 import { Link } from "react-router-dom";
-import { backend_url, currency } from "../../App";
+import { backend_url, moeda } from "../../App";
 
 const Item = (props) => {
   return (
@@ -23,13 +23,13 @@ const Item = (props) => {
       <div className="item-produto-precos">
         {/* Preço atual do produto */}
         <div className="item-produto-preco-novo">
-          {currency}
+          {moeda}
           {props.new_price}
         </div>
 
         {/* Preço antigo do produto */}
         <div className="item-produto-preco-antigo">
-          {currency}
+          {moeda}
           {props.old_price}
         </div>
       </div>

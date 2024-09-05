@@ -1,7 +1,7 @@
 import Navbar from "./Components/Navbar/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Shop from "./Pages/Loja";
-import Cart from "./Pages/Carrinho";
+import Carrinho from "./Pages/Carrinho";
 import Product from "./Pages/Produto";
 import Footer from "./Components/Footer/Footer";
 import ShopCategory from "./Pages/CategoriaLoja";
@@ -10,7 +10,7 @@ import banner_roupas from "./Components/Assets/banner1.png";
 import banner_bolsas from "./Components/Assets/banner_bolsas.png";
 import LoginSignup from "./Pages/Login";
 export const backend_url = "http://localhost:4000";
-export const currency = "R$ ";
+export const moeda = "R$ ";
 
 function App() {
   // const [showLogin,setShowLogin] = useState(false);
@@ -39,7 +39,7 @@ function App() {
           <Route path="/product" element={<Product />}>
             <Route path=":productId" element={<Product />} />
           </Route>
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/carrinho" element={<Carrinho />} />
           <Route path="/login" element={<LoginSignup />} />
         </Routes>
         <Footer />
