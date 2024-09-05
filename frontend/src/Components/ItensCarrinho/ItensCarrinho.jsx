@@ -9,7 +9,7 @@ const CarrinhoItems = () => {
   const {
     products,
     carrinhoItems,
-    removeFromCart,
+    removeCarrinho,
     updateCarrinhoItemQt,
     getTotalCarrinho,
   } = useContext(ShopContext);
@@ -20,7 +20,7 @@ const CarrinhoItems = () => {
       "Você tem certeza que deseja remover este item do carrinho?"
     );
     if (confirmRemove) {
-      removeFromCart(id); // Chama a função de remoção do contexto
+      removeCarrinho(id); // Chama a função de remoção do contexto
     }
   };
 

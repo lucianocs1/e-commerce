@@ -1,7 +1,7 @@
 import React from "react";
 import CarrinhoItems from "../Components/ItensCarrinho/ItensCarrinho";
 
-const Cart = () => {
+const Carrinho = () => {
   return (
     <div>
       <CarrinhoItems />
@@ -9,4 +9,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Carrinho;

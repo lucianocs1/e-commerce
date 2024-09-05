@@ -96,6 +96,12 @@
   color: #fff;
 }
 
+.erro-tamanho {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
 /* Media Queries */
 @media (max-width: 1024px) {
   .exibicao-produto {

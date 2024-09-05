@@ -14,7 +14,7 @@ const login = async (req, res) => {
       .status(400)
       .json({
         success: false,
-        errors: "Por favor, tente com e-mail/senha corretos",
+        errors: "E-mail ou senha está incorreto",
       });
   }
 };
@@ -24,7 +24,7 @@ const signup = async (req, res) => {
   if (check) {
     return res
       .status(400)
-      .json({ success: false, errors: "Usuário existente" });
+      .json({ success: false, errors: "Este e-mail já está em uso" });
   }
 
   const cart = Array.from({ length: 300 }, () => 0);
