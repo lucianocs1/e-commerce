@@ -8,20 +8,20 @@ const addCarrinho = async (req, res) => {
       return res.status(404).json({ message: "Usuário não encontrado" });
     }
 
-    // Inicializa cartData se não existir
-    if (!userData.cartData) {
-      userData.cartData = {};
+    // Inicializa dadosCarrinho se não existir
+    if (!userData.dadosCarrinho) {
+      userData.dadosCarrinho = {};
     }
 
     // Inicializa a quantidade do item se não existir
-    if (!userData.cartData[req.body.itemId]) {
-      userData.cartData[req.body.itemId] = 0;
+    if (!userData.dadosCarrinho[req.body.itemId]) {
+      userData.dadosCarrinho[req.body.itemId] = 0;
     }
 
-    userData.cartData[req.body.itemId] += 1;
+    userData.dadosCarrinho[req.body.itemId] += 1;
     await User.findOneAndUpdate(
       { _id: req.user.id },
-      { cartData: userData.cartData }
+      { dadosCarrinho: userData.dadosCarrinho }
     );
     res.send("Adicionado");
   } catch (error) {
@@ -39,11 +39,11 @@ const removeDoCarrinho = async (req, res) => {
       return res.status(404).json({ message: "Usuário não encontrado" });
     }
 
-    if (userData.cartData && userData.cartData[req.body.itemId] > 0) {
-      userData.cartData[req.body.itemId] -= 1;
+    if (userData.dadosCarrinho && userData.dadosCarrinho[req.body.itemId] > 0) {
+      userData.dadosCarrinho[req.body.itemId] -= 1;
       await User.findOneAndUpdate(
         { _id: req.user.id },
-        { cartData: userData.cartData }
+        { dadosCarrinho: userData.dadosCarrinho }
       );
       res.send("Removido");
     } else {
@@ -68,7 +68,7 @@ const getCarrinho = async (req, res) => {
       return res.status(404).json({ message: "Usuário não encontrado" });
     }
 
-    res.json(userData.cartData || {});
+    res.json(userData.dadosCarrinho || {});
   } catch (error) {
     res
       .status(500)

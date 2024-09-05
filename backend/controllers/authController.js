@@ -27,12 +27,12 @@ const signup = async (req, res) => {
       .json({ success: false, errors: "Este e-mail já está em uso" });
   }
 
-  const cart = Array.from({ length: 300 }, () => 0);
+  const carrinho = Array.from({ length: 300 }, () => 0);
   const user = new User({
     name: req.body.username,
     email: req.body.email,
     password: req.body.password,
-    cartData: cart,
+    dadosCarrinho: carrinho,
   });
   await user.save();
   const token = jwt.sign(
