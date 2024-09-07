@@ -19,72 +19,70 @@ const EditProduto = () => {
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        let dataObj = null;
-        await fetch(`${backend_url}/produto/${id}`, {
+        const response = await fetch(`${backend_url}/produto/${id}`, {
           method: "GET",
           headers: { Accept: "application/json" },
-        })
-          .then((resp) => resp.json())
-          .then((data) => {
-            dataObj = data[0];
-          });
-        if (dataObj) {
+        });
+
+        if (!response.ok) {
+          throw new Error("Erro ao carregar o produto");
+        }
+
+        const data = await response.json();
+
+        if (data) {
           setProductDetails({
-            name: dataObj.name,
-            description: dataObj.description,
-            image: dataObj.image,
-            category: dataObj.category,
-            new_price: dataObj.new_price,
-            old_price: dataObj.old_price,
+            name: data.name,
+            description: data.description,
+            image: data.image,
+            category: data.category,
+            new_price: data.new_price,
+            old_price: data.old_price,
           });
         } else {
           alert("Falha ao carregar o produto: Dados não encontrados");
         }
       } catch (error) {
-        console.log(error);
-        alert("Falha ao carregar o produto");
+        console.error("Erro ao carregar o produto:", error);
+        alert("Falha ao carregar o produto.");
       }
     };
+
     fetchProductDetails();
-  }, [id]); // <== Corrigido: depende do ID para recarregar quando ele mudar
-
+  }, [id]);
   const AddProduto = async () => {
-    let dataObj;
-    let product = productDetails;
-
-    let formData = new FormData();
-    formData.append("product", image);
-
-    await fetch(`${backend_url}/upload`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
-      body: formData,
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        dataObj = data;
-      });
-
-    if (dataObj.success) {
-      product.image = dataObj.image_url;
-      await fetch(`${backend_url}/edit/${id}`, {
+    let product = { ...productDetails }; // Clona os detalhes do produto para alterações
+  
+    try {
+      // await axios.put(`${url}/api/food/edit/${product._id}`, formData);
+      const response = await fetch(`${backend_url}/edit/${id}`, { // Ajuste a URL conforme necessário
         method: "PUT",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify(product),
-      })
-        .then((resp) => resp.json())
-        .then((data) => {
-          data.success
-            ? alert("Produto adicionado")
-            : alert("Falha ao adicionar o produto");
-        });
+      });
+  
+      // Verifica se a resposta é bem-sucedida
+      if (!response.ok) {
+        throw new Error('Falha na resposta do servidor');
+      }
+  
+      const data = await response.json();
+  
+      // Verifica se a resposta contém o produto atualizado
+      if (data._id) { // Checa se o ID do produto está presente, indicando sucesso
+        alert("Produto editado com sucesso!");
+      } else {
+        alert("Falha ao editar o produto.");
+      }
+    } catch (error) {
+      console.error("Erro ao editar o produto:", error);
+      alert("Ocorreu um erro ao tentar editar o produto.");
     }
   };
+  
 
   const changeHandler = (e) => {
     setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
@@ -179,7 +177,7 @@ const EditProduto = () => {
           AddProduto();
         }}
       >
-        Adicionar
+        Editar
       </button>
     </div>
   );
