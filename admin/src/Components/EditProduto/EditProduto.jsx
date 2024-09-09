@@ -3,6 +3,7 @@ import "./EditProduto.css";
 import upload_area from "../Assets/upload_area.svg";
 import { backend_url } from "../../App";
 import { useParams } from "react-router-dom";
+import axios from "axios"; // Importa o Axios
 
 const EditProduto = () => {
   const { id } = useParams();
@@ -52,27 +53,23 @@ const EditProduto = () => {
   }, [id]);
   const AddProduto = async () => {
     let product = { ...productDetails }; // Clona os detalhes do produto para alterações
-  
+
     try {
-      // await axios.put(`${url}/api/food/edit/${product._id}`, formData);
-      const response = await fetch(`${backend_url}/edit/${id}`, { // Ajuste a URL conforme necessário
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(product),
-      });
-  
-      // Verifica se a resposta é bem-sucedida
-      if (!response.ok) {
-        throw new Error('Falha na resposta do servidor');
-      }
-  
-      const data = await response.json();
-  
+      // Faz a requisição PUT para atualizar o produto
+      const response = await axios.put(
+        `${backend_url}/edit/${id}`,
+        product,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
       // Verifica se a resposta contém o produto atualizado
-      if (data._id) { // Checa se o ID do produto está presente, indicando sucesso
+      if (response.data._id) {
+        // Checa se o ID do produto está presente, indicando sucesso
         alert("Produto editado com sucesso!");
       } else {
         alert("Falha ao editar o produto.");
@@ -82,7 +79,6 @@ const EditProduto = () => {
       alert("Ocorreu um erro ao tentar editar o produto.");
     }
   };
-  
 
   const changeHandler = (e) => {
     setProductDetails({ ...productDetails, [e.target.name]: e.target.value });

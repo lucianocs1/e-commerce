@@ -6,6 +6,7 @@ const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const produtoRoutes = require("./routes/produtoRoutes");
 const carrinhoRoutes = require("./routes/carrinhoRoutes");
+require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -36,7 +37,7 @@ app.post("/upload", upload.single("product"), (req, res) => {
 app.use("/images", express.static("upload/images"));
 
 app.use(authRoutes);
-app.use(produtoRoutes);
+app.use("/", produtoRoutes);
 app.use(carrinhoRoutes);
 
 app.listen(port, (error) => {

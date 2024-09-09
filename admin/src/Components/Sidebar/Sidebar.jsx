@@ -20,7 +20,7 @@ const Sidebar = () => {
           <p>Lista de Produtos</p>
         </div>
       </Link>
-      <Link to="/docs" style={{ textDecoration: "none" }}>
+      <Link to="http://localhost:3000/docs/#/" target="_blank" style={{ textDecoration: "none" }}>
         <div className="sidebar-item">
           <img src={docs_imagem} alt="" />
           <p>Documentação</p>
